@@ -39,12 +39,5 @@ return {
     keymap.set("n", "<leader>sj", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
     keymap.set("n", "<leader>sk", "<cmd>Telescope builtin<cr>", { desc = "Telescope builtin" })
 
-    local util = require("AHua.util")
-    local c = require("AHua.color")
-    local hl_telescope = {
-      ["TelescopePreviewTitle"] = { guifg = c.black,   guibg = c.blue_light },
-      ["TelescopeMatching"]  = { guifg = c.orange_dark, guibg = 'NONE', gui = "bold", },
-    }
-    util.highlight(hl_telescope)
   end,
 }

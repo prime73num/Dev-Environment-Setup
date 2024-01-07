@@ -1,4 +1,6 @@
 return {
+  white = "#FFFCF0",
+  light_white = "#F2F0E5",
   black = '#100F0F',
   red = "#D14D41",
   red_dark = '#AF3029',

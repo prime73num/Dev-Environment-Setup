@@ -23,16 +23,6 @@ return {
       end,
     })
 
-    local util = require("AHua.util")
-    local c = require("AHua.color")
-    local hl_telescope = {
-      ["DiagnosticError"] = { guifg = c.red,   guibg = "NONE" },
-      ["DiagnosticWarn"]  = { guifg = c.orange_dark, guibg = 'NONE', },
-      ["DiagnosticInfo"]  = { guifg = c.blue_dark, guibg = 'NONE', },
-      ["DiagnosticHint"]  = { guifg = c.grey_dark, guibg = 'NONE', },
-    }
-    util.highlight(hl_telescope)
-
   end,
 }
 
