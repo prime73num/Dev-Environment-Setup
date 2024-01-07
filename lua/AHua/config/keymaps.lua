@@ -14,14 +14,16 @@ keymap.set("n", "<leader>i", "ciw", { desc = "Change in word" })
 keymap.set("n", "<leader>;", ":", { desc = "Command line" })
 keymap.set("n", "<leader>w", "<C-w>", { desc = "Window command prefix" })
 keymap.set("n", "<leader>q", "<C-w>c", { desc = "Close window" })
-keymap.set("n", "a", "$a", { desc = "Append in line" })
+keymap.set("n", "a", "$a", { desc = "Append at end of line" })
 keymap.set("n", "A", "hea", { desc = "Append after word" })
 keymap.set("n", "J", "3<C-e>3j", { desc = "Move up fast" })
 keymap.set("n", "K", "3<C-y>3k", { desc = "Move down fast" })
 keymap.set("n", "<leader>e", "<cmd>e #<cr>", { desc = "Go to last buffer" })
 keymap.set("n", "<cr>", "$", { desc = "Go to line end" })
 keymap.set("n", "U", "u", { desc = "Undo" })
+keymap.set("n", "u", "<Nop>", { desc = "Disable Undo" })
 keymap.set("i", "<c-v>", "<c-r><c-p>*", { desc = "Paste from system clipboard" })
+keymap.set("n", "<leader>.", ".", { desc = "Repeat last move" })
 
 
 
@@ -34,7 +36,7 @@ nnoremap <silent> b :call search('\<\w', 'bW', line("."))<cr>
 nnoremap <silent> gE :call search('\w\>', 'bW', line("."))<cr>
 ]])
 
-
+local util = require("AHua.util")
 -- Source _test.lua to test lua function
 new_command(
   'AHuaTest',
@@ -55,3 +57,10 @@ new_command(
   {}
 )
 
+new_command(
+  'Openfinder',
+  function()
+    util.open_finder()
+  end,
+  {}
+)

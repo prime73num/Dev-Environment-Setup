@@ -21,5 +21,8 @@ util.highlight = function(hl_groups)
 end
 
 
+util.open_finder = function ()
+  os.execute("open .")
+end
 
 return util

@@ -1,7 +1,6 @@
 return {
   {
     "theHamsta/nvim-treesitter-pairs",
-    dependencies = { "theHamsta/nvim-treesitter-pairs" },
     config = function()
       require("nvim-treesitter.configs").setup({
         pairs = {
