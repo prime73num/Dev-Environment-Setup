@@ -227,3 +227,54 @@ L           Next Terminal
 - [last-place.nvim](https://github.com/ethanholz/nvim-lastplace) go to last edit postion  
 - [harpoon.nvim](https://github.com/ThePrimeagen/harpoon) mark file  
 - [which-key.nvim](https://github.com/folke/which-key.nvim) show key mappings  
+
+
+
+## Git
+
+### settings
+
+```git
+[user]
+  name = ""
+  email = ""
+[alias]
+  lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+  last = "log -1"
+  co = "checkout"
+  cmm = "commit -m"
+  br = "branch"
+  unstage = "reset HEAD"
+```
+
+### Git command
+
+```text
+git push
+git checkout
+git branch
+git log
+git add
+git commit
+git reset
+git reflog
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
