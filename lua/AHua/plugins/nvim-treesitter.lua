@@ -13,8 +13,13 @@ return {
 
       -- configure treesitter
       treesitter.setup({ -- enable syntax highlighting
+        matchup = {
+          enable = true, -- mandatory, false will disable the whole extension
+          disable = { "c", "ruby" }, -- optional, list of language that will be disabled
+        },
         highlight = {
           enable = true,
+          disable = {"html"}, -- optional, list of language that will be disabled
         },
         -- enable indentation
         indent = { enable = true },
@@ -55,7 +60,7 @@ return {
       })
 
       -- enable nvim-ts-context-commentstring plugin for commenting tsx and jsx
-      require('ts_context_commentstring').setup {}
+      require("ts_context_commentstring").setup({})
     end,
   },
 }

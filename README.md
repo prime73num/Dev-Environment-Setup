@@ -210,13 +210,14 @@ opt.relativenumber = false -- show relative line numbers
 ```
 key mappings
 ```text
-.           Toggle floaterm
-<esc>       Exit Terminal to normal mode
-<leader>n   New Terminal
-q           Hide Terminal
-X           Kill Terminal
-H           Prev Terminal
-L           Next Terminal
+<leader><cr>    Send current to Terminal
+.               Toggle floaterm
+<esc>           Exit Terminal to normal mode
+<leader>n       New Terminal
+q               Hide Terminal
+X               Kill Terminal
+H               Prev Terminal
+L               Next Terminal
 
 ```
 
