@@ -104,8 +104,8 @@ return {
       local keymap = vim.keymap -- for conciseness
 
       keymap.set("n", "<leader>t", "<cmd>Neotree filesystem reveal left<cr>", { desc = "Open file tree" })
-      keymap.set("n", "<leader>sb", "<cmd>Neotree buffers reveal float toggle<cr>", { desc = "Open buffer" })
-      keymap.set("n", "<leader>sg", "<cmd>Neotree git_status reveal float toggle<cr>", { desc = "Open git status" })
+      keymap.set("n", "<leader>lb", "<cmd>Neotree buffers reveal float toggle<cr>", { desc = "Open buffer" })
+      keymap.set("n", "<leader>lg", "<cmd>Neotree git_status reveal float toggle<cr>", { desc = "Open git status" })
     end,
   },
 }

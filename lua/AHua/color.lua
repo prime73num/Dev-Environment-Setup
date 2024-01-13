@@ -1,6 +1,14 @@
 return {
+
+  paper = "#FFFCF0",
+  base_50 = "#F2F0E5",
+  base_100 = "#E6E4D9",
+  base_150 = "#DAD8CE",
+  base_200 = "#CECDC3",
+  base_300 = "#B7B5AC",
+
+
   white = "#FFFCF0",
-  light_white = "#F2F0E5",
   black = '#100F0F',
   red = "#D14D41",
   red_dark = '#AF3029',

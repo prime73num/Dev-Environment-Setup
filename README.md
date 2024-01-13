@@ -220,6 +220,27 @@ H               Prev Terminal
 L               Next Terminal
 
 ```
+### Next & Prev
+use `;` & `,` to repeat move and oppsite.
+
+```lua
+local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+local next_hunk_repeat, prev_hunk_repeat = ts_repeat_move.make_repeatable_move_pair(gs.next_hunk, gs.prev_hunk)
+
+```
+
+```text
+f       forward search in line
+]b      Next buffer
+]h      Next git hunk
+]q      Next quickfix list
+]d      Next error
+
+]f      Next function call
+]m      Next method
+]a      Next argument
+
+```
 
 ### Other Useful Plugins
 

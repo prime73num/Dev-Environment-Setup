@@ -10,6 +10,8 @@ local custom_hl = {
   ["DiagnosticWarn"] = { guifg = c.orange_dark, guibg = "NONE" },
   ["DiagnosticInfo"] = { guifg = c.blue_dark, guibg = "NONE" },
   ["DiagnosticHint"] = { guifg = c.grey_dark, guibg = "NONE" },
+  ["Search"] = { guifg = "NONE", guibg = c.base_150 , gui = "bold"},
+
 }
 
 util.highlight(custom_hl)

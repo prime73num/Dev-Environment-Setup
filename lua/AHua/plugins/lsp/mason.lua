@@ -51,6 +51,7 @@ return {
         "eslint_d", -- js linter
         "clang-format",
         "cmakelang",
+        "xmlformatter",
       },
     })
   end,

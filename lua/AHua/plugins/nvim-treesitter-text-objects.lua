@@ -1,5 +1,8 @@
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
+  dependencies = {
+  "lewis6991/gitsigns.nvim",
+  },
   lazy = true,
   config = function()
     require("nvim-treesitter.configs").setup({
@@ -114,5 +117,26 @@ return {
     vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
     vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
     vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
+
+    local gs = require("gitsigns")
+    local next_hunk_repeat, prev_hunk_repeat = ts_repeat_move.make_repeatable_move_pair(gs.next_hunk, gs.prev_hunk)
+    vim.keymap.set({ "n", "x", "o" }, "]h", next_hunk_repeat)
+    vim.keymap.set({ "n", "x", "o" }, "[h", prev_hunk_repeat)
+
+    local bnext, bprev = ts_repeat_move.make_repeatable_move_pair(function ()
+      vim.cmd("bnext")
+    end, function ()
+      vim.cmd("bprev")
+    end)
+    vim.keymap.set({ "n", "x", "o" }, "]b", bnext)
+    vim.keymap.set({ "n", "x", "o" }, "[b", bprev)
+
+    local qnext, qprev = ts_repeat_move.make_repeatable_move_pair(function ()
+      vim.cmd("cn")
+    end, function ()
+      vim.cmd("cN")
+    end)
+    vim.keymap.set({ "n", "x", "o" }, "]q", qnext)
+    vim.keymap.set({ "n", "x", "o" }, "[q", qprev)
   end,
 }

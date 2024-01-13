@@ -19,7 +19,7 @@ return {
         },
         highlight = {
           enable = true,
-          disable = {"html"}, -- optional, list of language that will be disabled
+          disable = { "html" }, -- optional, list of language that will be disabled
         },
         -- enable indentation
         indent = { enable = true },
@@ -47,6 +47,11 @@ return {
           "dockerfile",
           "gitignore",
           "query",
+          "python",
+          "java",
+          "c",
+          "cpp",
+          "cmake",
         },
         incremental_selection = {
           enable = true,

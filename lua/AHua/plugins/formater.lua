@@ -21,6 +21,7 @@ return {
         lua = { "stylua" },
         python = { "isort", "black" },
         c = { "clang-format" },
+        xml = {"xmlformatter"},
       },
     })
 

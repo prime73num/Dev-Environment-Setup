@@ -15,7 +15,7 @@ keymap.set("n", "<leader>;", ":", { desc = "Command line" })
 keymap.set("n", "<leader>w", "<C-w>", { desc = "Window command prefix" })
 keymap.set("n", "<leader>q", "<C-w>c", { desc = "Close window" })
 keymap.set("n", "a", "$a", { desc = "Append at end of line" })
-keymap.set("n", "A", "hea", { desc = "Append after word" })
+keymap.set("n", "A", "ea", { desc = "Append after word" })
 keymap.set("n", "J", "3<C-e>3j", { desc = "Move up fast" })
 keymap.set("n", "K", "3<C-y>3k", { desc = "Move down fast" })
 keymap.set("n", "<leader>e", "<cmd>e #<cr>", { desc = "Go to last buffer" })
@@ -24,9 +24,7 @@ keymap.set("n", "U", "u", { desc = "Undo" })
 keymap.set("n", "u", "<Nop>", { desc = "Disable Undo" })
 keymap.set("i", "<c-v>", "<c-r><c-p>*", { desc = "Paste from system clipboard" })
 keymap.set("n", "<leader>.", ".", { desc = "Repeat last move" })
-
-
-
+keymap.set("n", "<leader>rr", "<cmd>noh<cr>", { desc = "Redraw the highlights" })
 
 
 vim.cmd([[
@@ -38,29 +36,24 @@ nnoremap <silent> gE :call search('\w\>', 'bW', line("."))<cr>
 
 local util = require("AHua.util")
 -- Source _test.lua to test lua function
-new_command(
-  'AHuaTest',
-  function()
-    vim.cmd("source $HOME/.config/nvim/lua/AHua/_test.lua")
-  end,
-  {}
-)
+new_command("AHuaTest", function()
+  vim.cmd("source $HOME/.config/nvim/lua/AHua/_test.lua")
+end, {})
 
 -- Copy from vim register to sys clipboard
-new_command(
-  'CopyToSys',
-  function()
-    vim.cmd([[
+new_command("CopyToSys", function()
+  vim.cmd([[
       let @* = @0
     ]])
-  end,
-  {}
-)
+end, {})
 
-new_command(
-  'Openfinder',
-  function()
-    util.open_finder()
-  end,
-  {}
-)
+new_command("Openfinder", function()
+  util.open_finder()
+end, {})
+
+new_command("GetPath", function()
+  vim.cmd([[
+      echo expand("%")
+      let @* = expand("%")
+    ]])
+end, {})
