@@ -1,5 +1,6 @@
 vim.cmd([[
-let $LANG = 'en'
+language en_US.UTF-8
+set encoding=UTF-8
 ]])
 local opt = vim.opt -- for conciseness
 

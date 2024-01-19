@@ -19,11 +19,5 @@ return {
       "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>",
       { desc = "Toggle quick menu" }
     )
-    keymap.set(
-      "n",
-      "<leader>gh",
-      "<cmd>lua require('harpoon.ui').nav_file(vim.v.count)<cr>",
-      { desc = "Go to harpoon num" }
-    )
   end,
 }

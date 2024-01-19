@@ -2,6 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter-textobjects",
   dependencies = {
   "lewis6991/gitsigns.nvim",
+  "ThePrimeagen/harpoon",
   },
   lazy = true,
   config = function()
@@ -120,8 +121,8 @@ return {
 
     local gs = require("gitsigns")
     local next_hunk_repeat, prev_hunk_repeat = ts_repeat_move.make_repeatable_move_pair(gs.next_hunk, gs.prev_hunk)
-    vim.keymap.set({ "n", "x", "o" }, "]h", next_hunk_repeat)
-    vim.keymap.set({ "n", "x", "o" }, "[h", prev_hunk_repeat)
+    vim.keymap.set({ "n", "x", "o" }, "]g", next_hunk_repeat)
+    vim.keymap.set({ "n", "x", "o" }, "[g", prev_hunk_repeat)
 
     local bnext, bprev = ts_repeat_move.make_repeatable_move_pair(function ()
       vim.cmd("bnext")
@@ -138,5 +139,10 @@ return {
     end)
     vim.keymap.set({ "n", "x", "o" }, "]q", qnext)
     vim.keymap.set({ "n", "x", "o" }, "[q", qprev)
+
+    local hp =  require("harpoon.ui")
+    local hnext, hprev  = ts_repeat_move.make_repeatable_move_pair( hp.nav_next , hp.nav_prev)
+    vim.keymap.set({ "n", "x", "o" }, "]h", hnext)
+    vim.keymap.set({ "n", "x", "o" }, "[h", hprev)
   end,
 }
