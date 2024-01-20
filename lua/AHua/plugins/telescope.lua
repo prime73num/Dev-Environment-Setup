@@ -2,7 +2,6 @@ return {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
   dependencies = {
-    "kepano/flexoki-neovim",
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "nvim-tree/nvim-web-devicons",
@@ -28,8 +27,6 @@ return {
       },
     })
 
-    telescope.load_extension("fzf")
-    telescope.load_extension("harpoon")
 
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
@@ -48,5 +45,13 @@ return {
         initial_mode = "normal",
       })
     end, { desc = "Telescope buffers" })
+
+    keymap.set("n", "<leader>sp", function()
+      local proj = require("AHua.projects")
+      local opt = require('telescope.themes').get_dropdown({
+        initial_mode = "normal",
+      })
+      proj(opt)
+    end, { desc = "Telescope bookmark" })
   end,
 }

@@ -8,3 +8,6 @@ local groups = {
 }
 
 print(vim.fn.getline("."))
+
+local theme = require('telescope.themes').get_dropdown()
+print(vim.inspect(theme))
