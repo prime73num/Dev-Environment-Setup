@@ -76,20 +76,6 @@ return {
             },
           },
           commands = {
-            telescope_find = function(state)
-              local node = state.tree:get_node()
-              local path
-              if node and node.type == "directory" then
-                path = node:get_id()
-              else
-                path = node:get_parent_id()
-              end
-              print(path)
-              local tele_builtin = require("telescope.builtin")
-              tele_builtin.live_grep({
-                cwd = path,
-              })
-            end,
           },
         },
         buffers = {

@@ -14,6 +14,7 @@ local myfinder = finders.new_table({
     { "~/W.D/01_Paper" },
     { "~/W.D/12_cs143" },
     { "~/W.D/11_Leetcode/" },
+    { "~/.local/share/nvim/lazy/telescope.nvim" },
   },
   entry_maker = function(entry)
     return {
