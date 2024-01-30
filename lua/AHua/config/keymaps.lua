@@ -25,7 +25,8 @@ keymap.set("n", "u", "<Nop>", { desc = "Disable Undo" })
 keymap.set("i", "<c-v>", "<c-r><c-p>*", { desc = "Paste from system clipboard" })
 keymap.set("n", "<leader>.", ".", { desc = "Repeat last move" })
 keymap.set("n", "<leader>rr", "<cmd>noh<cr>", { desc = "Redraw the highlights" })
-
+keymap.set("n", "p", "p=`]", { desc = "Paste and format" })
+keymap.set("n", "s", "a", { desc = "append" })
 
 vim.cmd([[
 nnoremap <silent> w :call search('\<\w', 'W', line("."))<cr>

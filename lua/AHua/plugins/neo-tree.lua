@@ -6,6 +6,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
+      "nvim-telescope/telescope.nvim",
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     config = function()
@@ -56,7 +57,7 @@ return {
             },
             never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
               ".DS_Store",
-              "thumbs.db"
+              "thumbs.db",
             },
           },
           follow_current_file = {
@@ -71,7 +72,24 @@ return {
               ["[g"] = "prev_git_modified",
               ["]g"] = "next_git_modified",
               ["?"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "?" } },
+              ["<leader>s"] = "telescope_find",
             },
+          },
+          commands = {
+            telescope_find = function(state)
+              local node = state.tree:get_node()
+              local path
+              if node and node.type == "directory" then
+                path = node:get_id()
+              else
+                path = node:get_parent_id()
+              end
+              print(path)
+              local tele_builtin = require("telescope.builtin")
+              tele_builtin.live_grep({
+                cwd = path,
+              })
+            end,
           },
         },
         buffers = {

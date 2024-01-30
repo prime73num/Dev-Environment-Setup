@@ -1,3 +1,4 @@
+local ascii_art = require "AHua.ascii_art"
 return {
   "goolord/alpha-nvim",
   event = "VimEnter",
@@ -7,16 +8,7 @@ return {
     local dashboard = require("alpha.themes.dashboard")
 
     -- Set header
-    dashboard.section.header.val = {
-      "                                                     ",
-      "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-      "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-      "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-      "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-      "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-      "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-      "                                                     ",
-    }
+    dashboard.section.header.val = ascii_art.simple_v2
 
     dashboard.section.footer.val = os.date("%Y-%m-%d", os.time())
     -- Set menu

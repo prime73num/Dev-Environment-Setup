@@ -39,7 +39,7 @@ local project = function(opts)
   opts = opts or {}
   pickers
     .new(opts, {
-      prompt_title = "colors",
+      prompt_title = "MY PROJECT",
       sorter = conf.generic_sorter(opts),
       finder = myfinder,
       attach_mappings = mymappings,
