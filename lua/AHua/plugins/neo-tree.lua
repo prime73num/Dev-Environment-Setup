@@ -72,7 +72,6 @@ return {
               ["[g"] = "prev_git_modified",
               ["]g"] = "next_git_modified",
               ["?"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "?" } },
-              ["<leader>s"] = "telescope_find",
             },
           },
           commands = {
