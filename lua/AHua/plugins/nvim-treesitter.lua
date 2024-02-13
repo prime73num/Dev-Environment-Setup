@@ -22,7 +22,7 @@ return {
           disable = { "html" }, -- optional, list of language that will be disabled
         },
         -- enable indentation
-        indent = { enable = true },
+        indent = { enable = false },
         -- enable autotagging (w/ nvim-ts-autotag plugin)
         autotag = {
           enable = true,

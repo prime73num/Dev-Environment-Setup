@@ -47,17 +47,7 @@ return {
           },
         },
         swap = {
-          enable = true,
-          swap_next = {
-            ["<leader>na"] = "@parameter.inner", -- swap parameters/argument with next
-            ["<leader>n:"] = "@property.outer", -- swap object property with next
-            ["<leader>nm"] = "@function.outer", -- swap function with next
-          },
-          swap_previous = {
-            ["<leader>pa"] = "@parameter.inner", -- swap parameters/argument with prev
-            ["<leader>p:"] = "@property.outer", -- swap object property with prev
-            ["<leader>pm"] = "@function.outer", -- swap function with previous
-          },
+          enable = false,
         },
         move = {
           enable = true,
@@ -121,28 +111,28 @@ return {
 
     local gs = require("gitsigns")
     local next_hunk_repeat, prev_hunk_repeat = ts_repeat_move.make_repeatable_move_pair(gs.next_hunk, gs.prev_hunk)
-    vim.keymap.set({ "n", "x", "o" }, "]g", next_hunk_repeat)
-    vim.keymap.set({ "n", "x", "o" }, "[g", prev_hunk_repeat)
+    vim.keymap.set({ "n", "x", "o" }, "]g", next_hunk_repeat, { desc = "gitsign next" })
+    vim.keymap.set({ "n", "x", "o" }, "[g", prev_hunk_repeat, { desc = "gitsign prev" })
 
     local bnext, bprev = ts_repeat_move.make_repeatable_move_pair(function ()
       vim.cmd("bnext")
     end, function ()
       vim.cmd("bprev")
     end)
-    vim.keymap.set({ "n", "x", "o" }, "]b", bnext)
-    vim.keymap.set({ "n", "x", "o" }, "[b", bprev)
+    vim.keymap.set({ "n", "x", "o" }, "]b", bnext, { desc = "next buffer" })
+    vim.keymap.set({ "n", "x", "o" }, "[b", bprev, { desc = "prev buffer" })
 
     local qnext, qprev = ts_repeat_move.make_repeatable_move_pair(function ()
       vim.cmd("cn")
     end, function ()
       vim.cmd("cN")
     end)
-    vim.keymap.set({ "n", "x", "o" }, "]q", qnext)
-    vim.keymap.set({ "n", "x", "o" }, "[q", qprev)
+    vim.keymap.set({ "n", "x", "o" }, "]q", qnext, { desc = "next quickfix list" })
+    vim.keymap.set({ "n", "x", "o" }, "[q", qprev, { desc = "prev quickfix list" })
 
     local hp =  require("harpoon.ui")
     local hnext, hprev  = ts_repeat_move.make_repeatable_move_pair( hp.nav_next , hp.nav_prev)
-    vim.keymap.set({ "n", "x", "o" }, "]h", hnext)
-    vim.keymap.set({ "n", "x", "o" }, "[h", hprev)
+    vim.keymap.set({ "n", "x", "o" }, "]h", hnext, { desc = "next harpoon" })
+    vim.keymap.set({ "n", "x", "o" }, "[h", hprev, { desc = "prev harpoon" })
   end,
 }
