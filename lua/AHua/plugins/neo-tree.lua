@@ -51,7 +51,7 @@ return {
         },
         filesystem = {
           filtered_items = {
-            visible = true, -- when true, they will just be displayed differently than normal items
+            visible = false, -- when true, they will just be displayed differently than normal items
             always_show = { -- remains visible even if other settings would normally hide it
               ".gitignored",
             },
@@ -67,7 +67,7 @@ return {
           window = {
             mappings = {
               ["u"] = "navigate_up",
-              ["."] = "set_root",
+              ["cd"] = "set_root",
               ["H"] = "toggle_hidden",
               ["[g"] = "prev_git_modified",
               ["]g"] = "next_git_modified",
@@ -85,7 +85,7 @@ return {
             mappings = {
               ["bd"] = "buffer_delete",
               ["u"] = "navigate_up",
-              ["."] = "set_root",
+              ["cd"] = "set_root",
             },
           },
         },
@@ -106,7 +106,7 @@ return {
 
       local keymap = vim.keymap -- for conciseness
 
-      keymap.set("n", "<leader>t", "<cmd>Neotree filesystem reveal left<cr>", { desc = "Open file tree" })
+      -- keymap.set("n", "<leader>t", "<cmd>Neotree filesystem reveal left<cr>", { desc = "Open file tree" })
       keymap.set("n", "<leader>lb", "<cmd>Neotree buffers reveal float toggle<cr>", { desc = "Open buffer" })
       keymap.set("n", "<leader>lg", "<cmd>Neotree git_status reveal float toggle<cr>", { desc = "Open git status" })
     end,
