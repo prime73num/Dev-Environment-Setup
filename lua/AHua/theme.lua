@@ -13,6 +13,7 @@ local custom_hl = {
   ["Search"] = { guifg = c.black, guibg = c.base_100 , gui = "bold"},
 
   ["FlashLabel"] = { guifg = c.black, guibg = c.white },
+  ["IncSearch"] = { guifg = c.black, guibg = c.white },
 
 }
 
