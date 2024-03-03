@@ -143,5 +143,32 @@ return {
         },
       },
     })
+    lspconfig.gopls.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+      cmd = { "gopls" },
+      filetypes = { "go", "gomod", "gowork", "gotmpl" },
+      settings = {
+        gopls = {
+          completeUnimported = true,
+          usePlaceholders = true,
+          analyses = {
+            unusedparams = true,
+          },
+        },
+      },
+    })
+    lspconfig.rust_analyzer.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+      filetypes = {"rust"},
+      settings = {
+        ["rust-analyzer"] = {
+          diagnostics = {
+            enable = false,
+          },
+        },
+      },
+    })
   end,
 }

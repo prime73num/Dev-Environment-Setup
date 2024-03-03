@@ -22,4 +22,5 @@ opt.splitbelow = true -- split horizontal window to the bottom
 opt.swapfile = false
 opt.laststatus = 3
 opt.scrolloff = 8
+opt.pumheight = 23
 

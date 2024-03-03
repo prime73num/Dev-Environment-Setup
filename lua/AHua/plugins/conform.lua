@@ -23,6 +23,7 @@ return {
         c = { "clang-format" },
         cpp = { "clang-format" },
         xml = {"xmlformatter"},
+        rust = {"rustfmt"}
       },
     })
 

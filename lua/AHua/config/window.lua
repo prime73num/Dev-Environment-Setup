@@ -37,7 +37,7 @@ keymap.set("n", ".a", function()
   end
 end, { desc = "goto floaterm or open floaterm" })
 
-keymap.set("n", "..", function()
+keymap.set("n", ".d", function()
   local winnr = get_main_winnr()
   vim.api.nvim_set_current_win(winnr)
 end, { desc = "goto floaterm or open floaterm" })

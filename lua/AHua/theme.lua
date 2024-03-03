@@ -12,8 +12,29 @@ local custom_hl = {
   ["DiagnosticHint"] = { guifg = c.grey_dark, guibg = "NONE" },
   ["Search"] = { guifg = c.black, guibg = c.base_100 , gui = "bold"},
 
-  ["FlashLabel"] = { guifg = c.black, guibg = c.white },
+  ["FlashLabel"] = { guifg = c.black, guibg = c.base_100 },
   ["IncSearch"] = { guifg = c.black, guibg = c.white },
+
+  ["PmenuSel"] = { guifg = c.black, guibg = c.base_150 },
+
+  -- Cmp
+  --
+  ["CmpItemAbbrDeprecated"] = { guifg = "#808080", guibg = "NONE" },
+
+  ["CmpItemAbbrMatch "] = { guifg = c.orange_dark, guibg = "NONE" },
+  ["CmpItemAbbrMatchFuzzy"] = { guifg = c.orange_dark, guibg = "NONE" },
+
+  ["CmpItemKindVariable"] = { guifg = c.red, guibg = "NONE" },
+  ["CmpItemKindInterface"] = { guifg = c.red, guibg = "NONE" },
+  ["CmpItemKindText"] = { guifg = c.red, guibg = "NONE" },
+
+  ["CmpItemKindFunction"] = { guifg = c.purple, guibg = "NONE" },
+  ["CmpItemKindMethod"] = { guifg = c.purple, guibg = "NONE" },
+
+  ["CmpItemKindKeyword"] = { guifg = c.blue_dark, guibg = "NONE" },
+  ["CmpItemKindProperty"] = { guifg = c.blue_dark, guibg = "NONE" },
+  ["CmpItemKindUnit"] = { guifg = c.blue_dark, guibg = "NONE" },
+
 
 }
 

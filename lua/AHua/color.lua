@@ -19,4 +19,5 @@ return {
   blue_light = '#98BEDE',
   blue_dark = "#205EA6",
   grey_dark = "#878580",
+  purple = "#C586C0"
 }

@@ -21,11 +21,12 @@ keymap.set("n", "K", "3<C-y>3k", { desc = "Move down fast" })
 keymap.set("n", "<leader>e", "<cmd>e #<cr>", { desc = "Go to last buffer" })
 keymap.set("n", "<cr>", "$", { desc = "Go to line end" })
 keymap.set("n", "U", "u", { desc = "Undo" })
-keymap.set("n", "u", "<Nop>", { desc = "Disable Undo" })
+keymap.set("n", "u", "^", { desc = "Disable Undo" })
 keymap.set("i", "<c-v>", "<c-r><c-p>*", { desc = "Paste from system clipboard" })
 keymap.set("n", "<leader>.", ".", { desc = "Repeat last move" })
 keymap.set("n", "<leader>rr", "<cmd>noh<cr>", { desc = "Redraw the highlights" })
-keymap.set("n", "p", "p=`]", { desc = "Paste and format" })
+-- keymap.set("n", "p", "p=`]", { desc = "Paste and format" })
+keymap.set("n", ".", "^", { desc = "Disable redo" })
 
 vim.cmd([[
 nnoremap <silent> w :call search('\<\w', 'W', line("."))<cr>

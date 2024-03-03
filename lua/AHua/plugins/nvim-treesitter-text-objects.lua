@@ -1,8 +1,9 @@
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
   dependencies = {
-  "lewis6991/gitsigns.nvim",
-  "ThePrimeagen/harpoon",
+    "lewis6991/gitsigns.nvim",
+    "ThePrimeagen/harpoon",
+    "kwkarlwang/bufjump.nvim",
   },
   lazy = true,
   config = function()
@@ -114,24 +115,21 @@ return {
     vim.keymap.set({ "n", "x", "o" }, "]g", next_hunk_repeat, { desc = "gitsign next" })
     vim.keymap.set({ "n", "x", "o" }, "[g", prev_hunk_repeat, { desc = "gitsign prev" })
 
-    local bnext, bprev = ts_repeat_move.make_repeatable_move_pair(function ()
-      vim.cmd("bnext")
-    end, function ()
-      vim.cmd("bprev")
-    end)
+    local bufjump = require("bufjump")
+    local bnext, bprev = ts_repeat_move.make_repeatable_move_pair( bufjump.forward, bufjump.backward)
     vim.keymap.set({ "n", "x", "o" }, "]b", bnext, { desc = "next buffer" })
     vim.keymap.set({ "n", "x", "o" }, "[b", bprev, { desc = "prev buffer" })
 
-    local qnext, qprev = ts_repeat_move.make_repeatable_move_pair(function ()
+    local qnext, qprev = ts_repeat_move.make_repeatable_move_pair(function()
       vim.cmd("cn")
-    end, function ()
+    end, function()
       vim.cmd("cN")
     end)
     vim.keymap.set({ "n", "x", "o" }, "]q", qnext, { desc = "next quickfix list" })
     vim.keymap.set({ "n", "x", "o" }, "[q", qprev, { desc = "prev quickfix list" })
 
-    local hp =  require("harpoon.ui")
-    local hnext, hprev  = ts_repeat_move.make_repeatable_move_pair( hp.nav_next , hp.nav_prev)
+    local hp = require("harpoon.ui")
+    local hnext, hprev = ts_repeat_move.make_repeatable_move_pair(hp.nav_next, hp.nav_prev)
     vim.keymap.set({ "n", "x", "o" }, "]h", hnext, { desc = "next harpoon" })
     vim.keymap.set({ "n", "x", "o" }, "[h", hprev, { desc = "prev harpoon" })
   end,
