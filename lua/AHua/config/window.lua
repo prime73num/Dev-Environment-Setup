@@ -11,7 +11,7 @@ local goto_window_with_ft = function(filetype)
   return winnr
 end
 
-local get_main_winnr = function ()
+local get_main_winnr = function()
   local list = vim.api.nvim_list_wins()
   for i, winnr in ipairs(list) do
     local bufnr = vim.api.nvim_win_get_buf(winnr)
@@ -23,21 +23,28 @@ local get_main_winnr = function ()
   return nil
 end
 
-keymap.set("n", ".f", function()
-  local winnr = goto_window_with_ft("neo-tree")
-  if winnr==nil then
-    vim.cmd("Neotree filesystem reveal left")
-  end
-end, { desc = "goto neo-tree or open neo-tree" })
+return {
+  dir = "window",
+  name = "AHUa.window",
+  priority = 1500, -- make sure to load this before all the other start plugins
+  config = function()
+    keymap.set("n", ".f", function()
+      local winnr = goto_window_with_ft("neo-tree")
+      if winnr == nil then
+        vim.cmd("Neotree filesystem reveal left")
+      end
+    end, { desc = "goto neo-tree or open neo-tree" })
 
-keymap.set("n", ".a", function()
-  local winnr = goto_window_with_ft("floaterm")
-  if winnr==nil then
-    vim.cmd("FloatermToggle")
-  end
-end, { desc = "goto floaterm or open floaterm" })
+    keymap.set("n", ".a", function()
+      local winnr = goto_window_with_ft("floaterm")
+      if winnr == nil then
+        vim.cmd("FloatermToggle")
+      end
+    end, { desc = "goto floaterm or open floaterm" })
 
-keymap.set("n", ".d", function()
-  local winnr = get_main_winnr()
-  vim.api.nvim_set_current_win(winnr)
-end, { desc = "goto floaterm or open floaterm" })
+    keymap.set("n", ".d", function()
+      local winnr = get_main_winnr()
+      vim.api.nvim_set_current_win(winnr)
+    end, { desc = "goto floaterm or open floaterm" })
+  end,
+}

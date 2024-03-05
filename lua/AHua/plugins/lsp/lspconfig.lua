@@ -3,6 +3,7 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
+    "nvim-telescope/telescope.nvim",
     { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
@@ -11,6 +12,7 @@ return {
 
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    local tele_buildin = require("telescope.builtin")
 
     local keymap = vim.keymap -- for conciseness
 
@@ -41,13 +43,22 @@ return {
       keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
       opts.desc = "List buffer diagnostics"
-      keymap.set("n", "<leader>ld", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+      keymap.set(
+        "n",
+        "<leader>ld",
+        "<cmd>Telescope diagnostics bufnr=0<CR>",
+        opts
+      ) -- show  diagnostics for file
 
       opts.desc = "Show line diagnostics"
       keymap.set("n", "<leader>sd", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
-      local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
-      local dnext, dprev = ts_repeat_move.make_repeatable_move_pair(vim.diagnostic.goto_next, vim.diagnostic.goto_prev)
+      local ts_repeat_move =
+        require("nvim-treesitter.textobjects.repeatable_move")
+      local dnext, dprev = ts_repeat_move.make_repeatable_move_pair(
+        vim.diagnostic.goto_next,
+        vim.diagnostic.goto_prev
+      )
       opts.desc = "Go to previous diagnostic"
       keymap.set("n", "[d", dprev, opts) -- jump to previous diagnostic in buffer
 
@@ -59,6 +70,12 @@ return {
 
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+      opts.desc = "document symbols"
+      vim.keymap.set("n", "<leader>ds", tele_buildin.lsp_document_symbols, opts)
+
+      opts.desc = "workspace symbols"
+      vim.keymap.set("n", "<leader>ws", tele_buildin.lsp_dynamic_workspace_symbols, opts)
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
@@ -66,16 +83,12 @@ return {
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
-    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+    local signs =
+      { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
-
-    lspconfig["ltex"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
 
     lspconfig["clangd"].setup({
       capabilities = capabilities,
@@ -161,7 +174,7 @@ return {
     lspconfig.rust_analyzer.setup({
       on_attach = on_attach,
       capabilities = capabilities,
-      filetypes = {"rust"},
+      filetypes = { "rust" },
       settings = {
         ["rust-analyzer"] = {
           diagnostics = {

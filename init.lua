@@ -1,3 +1,3 @@
-require("AHua.config")
+-- require("AHua.config")
 require("AHua.load_plugins")
-require("AHua.theme")
+-- require("AHua.theme")
