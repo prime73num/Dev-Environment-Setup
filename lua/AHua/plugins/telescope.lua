@@ -1,4 +1,5 @@
 CWD = ""
+HOME = vim.env.HOME
 
 return {
   "nvim-telescope/telescope.nvim",
@@ -14,9 +15,15 @@ return {
     local builtin = require("telescope.builtin")
     local util = require("AHua.util")
     local telescopeConfig = require("telescope.config")
-    local vimgrep_arguments =
-      { unpack(telescopeConfig.values.vimgrep_arguments) }
-
+    local vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+    }
     -- I want to search in hidden/dot files.
     table.insert(vimgrep_arguments, "--hidden")
     -- I don't want to search in the `.git` directory.
@@ -64,6 +71,25 @@ return {
                 actions.close(prompt_bufnr)
                 builtin.find_files(opts)
               end,
+              ["u"] = function(prompt_bufnr)
+                local parent = util.get_parent_dir(CWD)
+                if parent == HOME then
+                  return
+                end
+                CWD = parent
+                local current_picker =
+                  require("telescope.actions.state").get_current_picker(
+                    prompt_bufnr
+                  )
+                local opts = {
+                  initial_mode = "normal",
+                  default_text = current_picker:_get_prompt(),
+                  cwd = CWD,
+                  prompt_prefix = CWD .. " > ",
+                }
+                actions.close(prompt_bufnr)
+                builtin.find_files(opts)
+              end,
             },
           },
         },
@@ -94,12 +120,20 @@ return {
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
 
-    keymap.set(
-      "n",
-      "<leader>f",
-      "<cmd>Telescope find_files<cr>",
-      { desc = "Fuzzy find files in cwd" }
-    )
+    keymap.set("n", "<leader>f", function()
+      local cwd = vim.fn.expand("%")
+      if cwd == "" then
+        CWD = vim.fn.getcwd()
+      else
+        CWD = util.get_parent_dir(vim.fn.expand("%:p"))
+      end
+      local opts = {
+        cwd = CWD,
+        prompt_prefix = CWD .. " > ",
+      }
+      builtin.find_files(opts)
+    end, { desc = "Fuzzy find files in cwd" })
+
     keymap.set(
       "n",
       "<leader>sj",

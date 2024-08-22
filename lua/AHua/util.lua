@@ -9,6 +9,12 @@ util.attri_to_str = function(args, opts)
   return args
 end
 
+util.hl = function(hl_groups)
+for name, val in pairs(hl_groups) do
+  hl(0, name, val)
+end
+end
+
 util.highlight = function(hl_groups)
   for group, highlight in pairs(hl_groups) do
     local args = {}

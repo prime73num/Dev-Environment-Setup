@@ -1,10 +1,7 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  init = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 1500
-  end,
+  delay = 1500,
   opts = {
     plugins = {
       marks = false, -- shows a list of your marks on ' and `

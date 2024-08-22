@@ -77,6 +77,9 @@ return {
       opts.desc = "workspace symbols"
       vim.keymap.set("n", "<leader>ws", tele_buildin.lsp_dynamic_workspace_symbols, opts)
     end
+    vim.diagnostic.config({
+      virtual_text = false
+    })
 
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()

@@ -5,46 +5,70 @@ return {
   config = function()
     local util = require("AHua.util")
     local c = require("AHua.color")
-    local custom_hl = {
-      ["WinSeparator"] = { guifg = c.black, guibg = "NONE" },
+    local custom_hl_group = {
+      Text = { fg = c.black, bg = "none" },
+      BoldText = { fg = c.black, bg = c.base_50, bold = true },
+      menu = { fg = c.black, bg = c.base_50, blend = 15 },
+      menusel = { fg = c.green_dark, bg = c.base_150 , bold = true },
+      match = { fg = c.red, bg = "none" , bold = true },
+      purple = { fg = c.purple, bg = "none" },
 
-      ["TelescopePreviewTitle"] = { guifg = c.black, guibg = c.blue_light },
-      ["TelescopeMatching"] = {
-        guifg = c.orange_dark,
-        guibg = "NONE",
-        gui = "bold",
-      },
+      green = { fg = c.paper, bg = c.cyan_light },
+      blue = { fg = c.paper, bg = c.blue_light },
+      red = { fg = c.paper, bg = c.red },
 
-      ["DiagnosticError"] = { guifg = c.red, guibg = "NONE" },
-      ["DiagnosticWarn"] = { guifg = c.orange_dark, guibg = "NONE" },
-      ["DiagnosticInfo"] = { guifg = c.blue_dark, guibg = "NONE" },
-      ["DiagnosticHint"] = { guifg = c.grey_dark, guibg = "NONE" },
-      ["Search"] = { guifg = c.black, guibg = c.base_50, gui = "bold" },
+      hi_yank = { fg = c.black, bg = c.blue_light },
 
-      ["FlashLabel"] = { guifg = c.red, guibg = c.paper, gui = "bold" },
-      ["IncSearch"] = { guifg = c.black, guibg = c.white },
+      DiagnosticError = { fg = c.red, bg = "none" },
+      DiagnosticWarn = { fg = c.orange_dark, bg = "none" },
+      DiagnosticInfo = { fg = c.blue_dark, bg = "none" },
+      DiagnosticHint = { fg = c.grey_dark, bg = "none" },
 
-      ["PmenuSel"] = { guifg = c.black, guibg = c.base_150 },
+      -- IncSearch = { fg = c.black, bg = c.white },
+
 
       -- Cmp
-      --
-      ["CmpItemAbbrDeprecated"] = { guifg = "#808080", guibg = "NONE" },
+      --[[ --
+      CmpItemAbbrDeprecated = { fg = "#808080", bg = "none" },
 
-      ["CmpItemAbbrMatch "] = { guifg = c.orange_dark, guibg = "NONE" },
-      ["CmpItemAbbrMatchFuzzy"] = { guifg = c.orange_dark, guibg = "NONE" },
+      CmpItemAbbrMatch = { fg = c.orange_dark, bg = "none" },
+      CmpItemAbbrMatchFuzzy = { fg = c.orange_dark, bg = "none" },
 
-      ["CmpItemKindVariable"] = { guifg = c.red, guibg = "NONE" },
-      ["CmpItemKindInterface"] = { guifg = c.red, guibg = "NONE" },
-      ["CmpItemKindText"] = { guifg = c.red, guibg = "NONE" },
+      CmpItemKindVariable = { fg = c.red, bg = "none" },
+      CmpItemKindInterface = { fg = c.red, bg = "none" },
+      CmpItemKindText = { fg = c.red, bg = "none" },
 
-      ["CmpItemKindFunction"] = { guifg = c.purple, guibg = "NONE" },
-      ["CmpItemKindMethod"] = { guifg = c.purple, guibg = "NONE" },
+      CmpItemKindFunction = { fg = c.purple, bg = "none" },
+      CmpItemKindMethod = { fg = c.purple, bg = "none" },
 
-      ["CmpItemKindKeyword"] = { guifg = c.blue_dark, guibg = "NONE" },
-      ["CmpItemKindProperty"] = { guifg = c.blue_dark, guibg = "NONE" },
-      ["CmpItemKindUnit"] = { guifg = c.blue_dark, guibg = "NONE" },
+      CmpItemKindKeyword = { fg = c.blue_dark, bg = "none" },
+      CmpItemKindProperty = { fg = c.blue_dark, bg = "none" },
+      CmpItemKindUnit = { fg = c.blue_dark, bg = "none" },
+ ]]
+
+
+      GitSignsAdd = { link = "green" },
+      GitSignsChange = { link = "blue" },
+      GitSignsDelete = { link = "red" },
+
+      TelescopeMatching = { link = "match" },
+      TelescopeNormal = { link = "menu" },
+      TelescopeSelection = { link = "menusel" },
+
+      PmenuSel = { link = "menusel" },
+      Pmenu = { link = "menu" },
+      CmpItemAbbrMatch = { link = "match" },
+      CmpItemAbbrMatchFuzzy = { link = "match" },
+
+      Search = { link = "BoldText" },
+      WinSeparator = { link = "Text" },
+
+      ["@variable"] = { link = "Text"},
+      ["@property"] = { link = "Text"},
+      ["@keyword"] = { link = "SpecialChar"},
+      ["@type"] = { link = "Identifier"},
     }
 
-    util.highlight(custom_hl)
+    util.hl(custom_hl_group)
   end,
 }

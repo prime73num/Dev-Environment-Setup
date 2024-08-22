@@ -28,5 +28,13 @@ return {
     opt.laststatus = 3
     opt.scrolloff = 8
     opt.pumheight = 23
+
+    vim.api.nvim_create_autocmd("TextYankPost", {
+      desc = "highlight yank area",
+      group = vim.api.nvim_create_augroup("hi-yank", {clear = true}),
+      callback = function ()
+        vim.highlight.on_yank({higroup = "hi_yank"})
+      end,
+    })
   end,
 }
